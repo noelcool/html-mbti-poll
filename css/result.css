@@ -6,12 +6,32 @@
   border-radius: 20px;
 }
 
+#shareResult {
+  background-color: whitesmoke;
+  width: 80%;
+  text-align: center;
+  border-radius: 20px;
+}
+
 .resultDesc {
   font-size: 20px;
 }
 
 .resultName {
   font-size: 20px;
+}
+
+.goHome {
+  color: white;
+  background-color: pink;
+  border: 0px;
+  font-size: 20px;
+  border-radius: 20px;
+}
+
+.goHome:hover, .goHome:focus {
+  background-color: whitesmoke;
+  color: pink;
 }
 
 .kakao {

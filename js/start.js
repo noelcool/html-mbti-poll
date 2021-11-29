@@ -4,6 +4,17 @@ const qna = document.querySelector("#qna");
 const result = document.querySelector("#result");
 const statusPoint = 12;
 const selectList = [0,0,0,0,0,0,0,0,0,0,0,0];
+const answerList = [0,0,0,0,0,0,0,0,0,0,0,0];
+
+function openClose() {
+  if (document.querySelector(".answerGroup").style.display === "block") {
+    document.querySelector(".answerGroup").style.display = 'none';
+    document.querySelector("#answerToggle").textContent = '보이기';
+  } else {
+    document.querySelector(".answerGroup").style.display = 'block';
+    document.querySelector("#answerToggle").textContent = '숨기기';
+  }
+}
 
 function calculationResult() {
   var result = selectList.indexOf(Math.max(...selectList));
@@ -14,6 +25,19 @@ function setResult() {
   let point = calculationResult();
   const resultName = document.querySelector('.resultName');
   resultName.innerHTML = infoList[point].name;
+
+  const answerGroup = document.querySelector(".answerGroup");
+  for(let i=0; i < statusPoint; i++) {
+    let li = document.createElement("li");
+    let tempText = qnaList[i].q;
+    li.innerText = tempText;
+    answerGroup.appendChild(li);
+    let li2 = document.createElement("li");
+    let tempText2 = "-> " +qnaList[i].a[answerList[i]].answer;
+    li2.innerText = tempText2
+    answerGroup.appendChild(li2);
+  }
+
   var resultImg = document.createElement('img');
   const resultImgDiv = document.querySelector('#resultImg');
   var imgUrl = 'img/image-' + point + '.png';
@@ -51,6 +75,7 @@ function addAnswerBtn(answerText, qIdx, answerIdx) {
   answer.innerHTML = answerText;
 
   answer.addEventListener("click", function(){
+    answerList[qIdx] = answerIdx;
     var children = document.querySelectorAll('.answerList');
     for(let i=0; i < children.length; i++) {
       children[i].disabled = true;

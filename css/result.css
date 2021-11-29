@@ -46,3 +46,15 @@
   background-color: whitesmoke;
   color: #FEE500;
 }
+
+li {
+   list-style:none;
+}
+
+.answerGroup {
+  display: none;
+}
+
+#answerToggle {
+  cursor: pointer;
+}
